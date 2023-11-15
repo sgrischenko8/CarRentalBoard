@@ -1,0 +1,19 @@
+#root {
+  margin: 0 auto;
+}
+
+.hero-section {
+  width: 1024px;
+  height: 427px;
+  background-image: linear-gradient(
+      rgba(46, 57, 86, 0.3),
+      rgba(46, 47, 66, 0.75)
+    ),
+    url(./images/Car-Hero-w-1024x427.jpg);
+}
+
+.hero-img {
+  width: 256px;
+  height: 106px;
+  filter: blur(1px);
+}
