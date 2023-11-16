@@ -1,28 +1,31 @@
-body a.btn {
+.catalog_section {
+  text-align: center;
+}
+
+.catalog_search_form {
   display: flex;
-  margin-left: 0.5em;
-  margin-right: auto;
-  margin-bottom: 0.4em;
-  padding: 0.1em 0.4em;
-  max-width: fit-content;
-  border-radius: 0.4em;
-  border: transparent;
-  color: inherit;
-  text-decoration: none;
-  background-color: inherit;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.5),
-    0px -2px 4px -1px rgba(0, 0, 0, 0.5);
+  align-items: flex-end;
+  gap: 18px;
+  width: 859px;
+  height: 74px;
+  text-align: left;
 }
 
-.no_data {
-  color: red;
+.catalog_brand_label {
+  width: 224px;
 }
 
-.add_text {
-  margin-left: 0.5em;
+.catalog_price_label {
+  width: 125px;
 }
-.additional_info_links {
-  margin-top: 0.5em;
-  border-top: 0.5px solid grey;
-  border-bottom: 0.5px solid grey;
+.catalog_price_label > select {
+  width: 100%;
+}
+
+.catalog_mileage_fieldset {
+  border: none;
+}
+
+.catalog_mileage_fieldset > input {
+  width: 160px;
 }

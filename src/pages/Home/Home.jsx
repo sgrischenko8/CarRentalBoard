@@ -3,6 +3,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setFavorites } from "src/redux/favoritesSlice";
 import { selectFavorites } from "src/redux/selectors";
+import imgHero from "src/images/Car-Hero-w-1024x427.jpg";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,15 @@ const Home = () => {
   console.log(persistedFavorites);
   return (
     <>
-      <p>About rent</p>
+      <section className={"hero-section"}></section>
+      <img
+        src={imgHero}
+        alt="a series of cars"
+        className={"hero-img"}
+        width={256}
+        height={106}
+      ></img>
+      <h1 style={{ textAlign: "center" }}>Car Rental</h1>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import carIcon from "../../../public/car.svg";
+import carIcon from "/car.svg";
 import css from "./Loader.module.css";
 
 const Loader = () => {
@@ -7,8 +7,8 @@ const Loader = () => {
       <img
         src={carIcon}
         alt="loader"
-        height="120"
-        width="120"
+        height={100}
+        width={100}
         className={css.loader}
       />
     </div>

@@ -1,6 +1,6 @@
 // import { useState, useEffect, useRef } from "react";
 // import { useSearchParams } from "react-router-dom";
-
+import Loader from "src/components/Loader/Loader";
 // import styles from "./Movies.module.css";
 
 const Favorites = () => {
@@ -19,6 +19,7 @@ const Favorites = () => {
   return (
     <>
       <p>Favorites</p>
+      <Loader />
     </>
   );
 };
