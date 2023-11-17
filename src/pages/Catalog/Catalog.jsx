@@ -4,9 +4,7 @@ import Select from 'react-select';
 import css from './Catalog.module.css';
 import brands from '../../../public/makes.json';
 import { Button } from '../../components/Button/Button';
-
-const res = await fetch('src/advertsCars.json');
-const advertsCars = await res.json();
+import { cars } from 'src/advertCars';
 
 const Catalog = () => {
   // useEffect(() => {
@@ -90,7 +88,7 @@ const Catalog = () => {
               <option style={{ display: 'none' }} defaultValue>
                 To {chosenRentalPrice}$
               </option>
-              {getRentalPriceRangeOptions(advertsCars).map((el) => (
+              {getRentalPriceRangeOptions(cars).map((el) => (
                 <option value={el} key={el}>
                   {el}
                 </option>

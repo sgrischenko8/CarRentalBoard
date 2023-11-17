@@ -8,7 +8,7 @@ export default defineConfig({
       src: '/src',
     },
   },
-  base: '/CarRentalBoard',
+  base: '/CarRentalBoard/',
   build: {
     target: 'esnext',
   },
