@@ -23,7 +23,7 @@ const Home = () => {
         width={256}
         height={106}
       ></img>
-      <h1 style={{ textAlign: "center" }}>Car Rental</h1>
+      <h1 style={{ textAlign: "center" }}>Rentik</h1>
     </>
   );
 };
