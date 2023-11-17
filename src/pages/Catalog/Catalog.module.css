@@ -1,0 +1,31 @@
+.catalog_section {
+  text-align: center;
+}
+
+.catalog_search_form {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  width: 859px;
+  height: 74px;
+  text-align: left;
+}
+
+.catalog_brand_label {
+  width: 224px;
+}
+
+.catalog_price_label {
+  width: 125px;
+}
+.catalog_price_label > select {
+  width: 100%;
+}
+
+.catalog_mileage_fieldset {
+  border: none;
+}
+
+.catalog_mileage_fieldset > input {
+  width: 160px;
+}
