@@ -1,11 +1,11 @@
 // import {  useParams } from "react-router-dom";
-import { useState } from "react";
-import Select from "react-select";
-import css from "./Catalog.module.css";
-import brands from "../../../public/makes.json";
-import { Button } from "../../components/Button/Button";
+import { useState } from 'react';
+import Select from 'react-select';
+import css from './Catalog.module.css';
+import brands from '../../../public/makes.json';
+import { Button } from '../../components/Button/Button';
 
-const res = await fetch("src/advertsCars.json");
+const res = await fetch('src/advertsCars.json');
 const advertsCars = await res.json();
 
 const Catalog = () => {
@@ -46,8 +46,8 @@ const Catalog = () => {
     let rentalPriceArray = [];
     array.map((el) =>
       rentalPriceArray.push(
-        Number(el.rentalPrice.slice(1, el.rentalPrice.length))
-      )
+        Number(el.rentalPrice.slice(1, el.rentalPrice.length)),
+      ),
     );
 
     let maxRange = Math.ceil(Math.max(...rentalPriceArray) / 10) * 10;
@@ -72,8 +72,8 @@ const Catalog = () => {
           <label className={css.catalog_brand_label}>
             Car brand
             <Select
-              name={"brand"}
-              placeholder={"Enter the text"}
+              name={'brand'}
+              placeholder={'Enter the text'}
               options={getOptions(brands)}
               onChange={(e) => {
                 console.log(e.target);
@@ -84,10 +84,10 @@ const Catalog = () => {
             Price/ 1 hour
             <select
               name="rentalPrice"
-              value={""}
+              value={''}
               onChange={(e) => setChosenRentalPrice(e.target.value)}
             >
-              <option style={{ display: "none" }} defaultValue>
+              <option style={{ display: 'none' }} defaultValue>
                 To {chosenRentalPrice}$
               </option>
               {getRentalPriceRangeOptions(advertsCars).map((el) => (
@@ -99,7 +99,7 @@ const Catalog = () => {
           </label>
           <fieldset className={css.catalog_mileage_fieldset}>
             <legend>Car mileage / km</legend>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: 'flex' }}>
               <input
                 name="mileage-from"
                 className={css.catalog_mileage_input}
