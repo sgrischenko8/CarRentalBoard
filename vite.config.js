@@ -10,7 +10,7 @@ export default defineConfig({
       components: '/src/components',
     },
   },
-  base: '/CarRentalBoard',
+  base: '/CarRentalBoard/',
   build: {
     target: 'esnext',
   },
