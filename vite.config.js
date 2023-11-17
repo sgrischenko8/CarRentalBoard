@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import svgr from 'vite-plugin-svgr';
+import pluginRewriteAll from 'vite-plugin-rewrite-all';
 
 export default defineConfig({
-  plugins: [react(), svgr()],
+  plugins: [react(), svgr(), pluginRewriteAll()],
   resolve: {
     alias: {
       src: '/src',
@@ -11,7 +12,7 @@ export default defineConfig({
     },
   },
   base: '/CarRentalBoard',
-   build: {
+  build: {
     target: 'esnext',
   },
 });
