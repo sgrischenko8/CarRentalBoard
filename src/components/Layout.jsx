@@ -15,9 +15,9 @@ const Layout = () => {
           </ul>
           <NavLink to="/">About</NavLink>
 
-          <NavLink to="catalog">Catalog</NavLink>
+          <NavLink to="/catalog">Catalog</NavLink>
 
-          <NavLink to="favorites">Favorites</NavLink>
+          <NavLink to="/favorites">Favorites</NavLink>
         </nav>
       </header>
       <main>
