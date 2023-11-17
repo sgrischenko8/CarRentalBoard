@@ -11,10 +11,10 @@ import "./App.css";
 function App() {
   return (
     <Routes>
-      <Route path="/CarRentalBoard" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="CarRentalBoard/catalog" element={<Catalog />} />
-        <Route path="favorites" element={<Favorites />} />
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
