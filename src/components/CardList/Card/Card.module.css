@@ -30,6 +30,9 @@
 
 .card_color_text {
   color: #3470ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card_tags_container {

@@ -10,6 +10,7 @@ export const fetchCars = createAsyncThunk('cars', async (data, thunkAPI) => {
         limit: data.limit,
       },
     });
+
     return response.data;
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);

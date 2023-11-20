@@ -1,8 +1,5 @@
-.catalog_section {
+.message {
   text-align: center;
-}
-
-.catalog_error_message {
   width: 40%;
   font-weight: 500;
   font-size: 28px;

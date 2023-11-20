@@ -66,6 +66,11 @@ header {
   display: flex;
   box-shadow: 0px 4px 8px -1px rgba(0, 0, 0, 0.5);
 }
+header ul {
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+}
 
 main {
   margin: 150px 0;
@@ -73,7 +78,9 @@ main {
 
   min-height: calc(100vh - 400px);
 }
-
+section {
+  text-align: center;
+}
 footer {
   height: 40px;
 }
@@ -192,4 +199,56 @@ header a:hover {
 
 body header .active {
   background-color: #0b44cd;
+}
+
+/* //--- paginator--- */
+.item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.disabled-page {
+  color: #808e9b;
+}
+
+.pagination .current {
+  border: solid 1px rgba(18 20 23 / 10%);
+  border-radius: 40px;
+  color: #0b44cd;
+}
+
+.next {
+  border-left: 1px solid rgba(18 20 23 / 10%);
+  position: absolute;
+  right: 0;
+  width: 60px;
+}
+
+.pagination {
+  margin: 0 auto 40px;
+  align-items: center;
+  background-color: #f7f7fb;
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  justify-content: center;
+  list-style-type: none;
+  position: relative;
+  width: 400px;
+}
+
+.pagination-page {
+  font-weight: 700;
+}
+
+.previous {
+  border-right: 1px solid rgba(18 20 23 / 10%);
+  left: 0;
+  position: absolute;
+  width: 60px;
 }

@@ -10,3 +10,18 @@
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 3;
 }
+
+[stroke='#f3f3f3'] {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 1200;
+  animation: dash 0.2s linear alternate infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 822;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

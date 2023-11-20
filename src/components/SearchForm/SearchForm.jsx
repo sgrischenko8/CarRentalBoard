@@ -1,7 +1,7 @@
 import css from './SearchForm.module.css';
 import { Button } from 'src/components/Button/Button';
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { setFilter } from 'src/redux/filterSlice';
 
 import Select from 'react-select';
@@ -108,6 +108,7 @@ export const SearchForm = ({ cars }) => {
       <label className={css.catalog_brand_label}>
         Car brand
         <Select
+          isClearable={true}
           name={'brand'}
           placeholder={'Enter the text'}
           options={getOptions(brands)}
@@ -153,16 +154,16 @@ export const SearchForm = ({ cars }) => {
           <label htmlFor="mileage-to">To</label>
         </div>
       </fieldset>
-      <button type="submit">ok</button>
-      {/* <Button
+
+      <Button
         onClick={() => {
-          return;
+          return false;
         }}
         width={136}
         height={48}
       >
         Search
-      </Button> */}
+      </Button>
     </form>
   );
 };

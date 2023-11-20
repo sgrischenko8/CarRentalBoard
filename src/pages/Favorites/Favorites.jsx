@@ -1,8 +1,8 @@
-import styled from '../Catalog/Catalog.module.css';
 import { selectFavorites } from 'src/redux/selectors';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { CardList } from 'src/components/CardList/CardList';
+import { Message } from 'src/components/Message/Message';
 
 const Favorites = () => {
   const persistedFavorites = useSelector(selectFavorites);
@@ -21,9 +21,7 @@ const Favorites = () => {
       {favoriteCars.length > 0 ? (
         <CardList cars={favoriteCars} />
       ) : (
-        <p className={styled.catalog_error_message}>
-          Your favorites is empty now
-        </p>
+        <Message string={'Your favorites is empty now'} />
       )}
     </>
   );

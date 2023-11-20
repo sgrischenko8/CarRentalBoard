@@ -1,34 +1,30 @@
-import css from './Catalog.module.css';
 import { fetchCars } from 'src/redux/operations';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
-  selectCars,
+  selectContactsToRender,
   selectLoading,
   selectError,
-  selectContactsToRender,
 } from 'src/redux/selectors';
 
 import { CardList } from 'src/components/CardList/CardList';
 import { SearchForm } from 'src/components/SearchForm/SearchForm';
 import { Loader } from 'src/components/Loader/Loader';
 import { PaginatedItems } from 'src/components/Paginator/Paginator';
+import { Message } from 'src/components/Message/Message';
 
 const Catalog = () => {
   const dispatch = useDispatch();
   let location = useLocation();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const cars = useSelector(selectCars);
-
-  const filteredCars = useSelector(selectContactsToRender);
-  console.log(filteredCars);
+  const cars = useSelector(selectContactsToRender);
 
   let pageCount = 3;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [loadMore, setLoadMore] = useState(false);
+  const [limit, setLimit] = useState(12);
 
   let allCars = [];
   allCars = location.state.allCars ? location.state.allCars : cars;
@@ -37,27 +33,37 @@ const Catalog = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchCars({ page: currentPage, limit: 12 }));
-  }, [dispatch, currentPage]);
+    dispatch(fetchCars({ page: currentPage, limit }));
+  }, [dispatch, currentPage, limit]);
 
   return (
     <>
-      <section className={css.catalog_section}>
+      <section>
         {loading && <Loader />}
-        <SearchForm cars={loadMore ? allCars : cars} />
+        <SearchForm cars={cars} />
         {error && (
-          <p className={css.catalog_error_message}>
-            Looks like we have technical problems. Please try again or call
-            +380730000000
-          </p>
+          <Message
+            string={
+              'Looks like we have technical problems. Please try again or call +380730000000'
+            }
+          />
         )}
-        <CardList cars={loadMore ? filteredCars : cars} />
+        {!loading && cars.length === 0 && (
+          <Message string={'No results for such request'} />
+        )}
+        <CardList cars={cars} />
         <PaginatedItems
           setCurrentPage={setCurrentPage}
-          pageCount={loadMore ? 0 : location.state.allCars ? pageCount : 3}
+          pageCount={limit !== 12 ? 0 : location.state.allCars ? pageCount : 3}
         />
-        {cars.length > 0 && (
-          <button type="button" onClick={() => setLoadMore(true)}>
+        {limit === 12 && (
+          <button
+            type="button"
+            onClick={() => {
+              setCurrentPage(1);
+              setLimit(undefined);
+            }}
+          >
             Load more
           </button>
         )}

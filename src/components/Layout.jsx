@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { useEffect } from 'react';
-// import css from "./Layout.module.css";
 import { Loader } from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from 'src/redux/favoritesSlice';
@@ -28,19 +27,20 @@ export const Layout = () => {
       <header>
         <nav>
           <ul>
-            {['About', 'Catalog', 'Favorites'].map((el) => (
-              <li key={el}>{el}</li>
-            ))}
+            <li>
+              <NavLink to="/">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/catalog" state={{ allCars }}>
+                Catalog
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/favorites" state={{ allCars }}>
+                Favorites
+              </NavLink>
+            </li>
           </ul>
-          <NavLink to="/">About</NavLink>
-
-          <NavLink to="/catalog" state={{ allCars }}>
-            Catalog
-          </NavLink>
-
-          <NavLink to="/favorites" state={{ allCars }}>
-            Favorites
-          </NavLink>
         </nav>
       </header>
       <main>
