@@ -1,0 +1,1 @@
+import{j as e}from"./index-EIyninMd.js";const s="/CarRentalBoard/assets/Car-Hero-w-1024x427-hzlwT7mu.jpg",r=()=>e.jsxs(e.Fragment,{children:[e.jsx("section",{className:"hero-section"}),e.jsx("img",{src:s,alt:"a series of cars",className:"hero-img",width:256,height:106}),e.jsx("h1",{style:{textAlign:"center"},children:"Rentik"})]});export{r as default};
