@@ -1,0 +1,14 @@
+.fav_btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  height: 18px;
+  border: none;
+}
+.fav_btn:hover,
+.fav_btn:focus {
+  scale: 1.2;
+}
+.fav_btn:active {
+  scale: 1;
+}

@@ -1,4 +1,4 @@
-import Layout from './components/Layout';
+import { Layout } from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 

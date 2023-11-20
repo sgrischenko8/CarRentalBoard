@@ -1,6 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-// import { contactsApi } from "./contacts/contactsSlice";
-// import { authApi } from "./auth/authSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { fetchCarsReducer, fetchAllCarsReducer } from './carsSlice';
+import { filterReducer } from './filterSlice';
+import { persistedReducer } from './favoritesSlice';
 import {
   persistStore,
   FLUSH,
@@ -9,12 +10,13 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-
-import { persistedReducer } from "./favoritesSlice";
+} from 'redux-persist';
 
 export const store = configureStore({
   reducer: {
+    cars: fetchCarsReducer,
+    allCars: fetchAllCarsReducer,
+    filter: filterReducer,
     favorites: persistedReducer,
   },
 

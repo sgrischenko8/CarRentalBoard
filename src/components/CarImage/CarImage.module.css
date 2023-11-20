@@ -1,0 +1,12 @@
+.card_thumb {
+  margin-bottom: 14px;
+  background-color: #12141710;
+  border-radius: 14px;
+}
+.card_img {
+  border-radius: 14px;
+}
+.card_img_dummy {
+  padding: 80px;
+  border-radius: 14px;
+}

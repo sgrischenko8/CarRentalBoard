@@ -1,0 +1,140 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.modal {
+  position: relative;
+  padding: 40px;
+  width: 541px;
+  min-height: 752px;
+  border-radius: 24px;
+  background-color: #fff;
+}
+
+.modal_close_btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 24px;
+  height: 24px;
+  font-weight: 300;
+  font-size: 38px;
+  line-height: 1;
+  color: #121417;
+  transform: rotate(45deg);
+}
+.modal_close_btn:hover,
+.modal_close_btn:focus {
+  scale: 1.2;
+  color: inherit;
+}
+.modal_close_btn:active {
+  scale: 1;
+}
+
+.modal_flex_column_container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.modal_flex_container {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+.modal_flex_container > h3,
+.modal_flex_container > span {
+  max-height: 24px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: calc(24 / 18);
+}
+
+.modal_color_text {
+  color: #3470ff;
+}
+
+.modal_tags_container {
+  display: flex;
+  gap: 4px;
+  flex-direction: column;
+  text-align: left;
+}
+.modal_tags_container > div,
+.modal_tags_container > ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  color: #12141710;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.modal_tags_container span {
+  display: inline-block;
+  height: 18px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: calc(18 / 12);
+  color: #12141750;
+}
+.modal_tags_container li > span {
+  padding-right: 4px;
+}
+
+.modal_capitalize_text {
+  text-transform: capitalize;
+}
+
+.modal_text {
+  margin-top: 14px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+.modal_undertitle {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+}
+
+.modal_wrap_container {
+  padding-right: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  line-height: calc(18 / 12);
+}
+.modal_wrap_container > li {
+  padding: 7px 14px;
+  border-radius: 35px;
+  color: #363535;
+  background-color: #f9f9f9;
+}
+.modal_wrap_container > li:first-child,
+.modal_wrap_container > li:nth-last-child(-n + 2) {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.modal_wrap_container span {
+  font-weight: 600;
+  color: #3470ff;
+}

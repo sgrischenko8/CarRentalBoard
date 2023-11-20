@@ -1,18 +1,10 @@
-import carIcon from "/car.svg";
-import css from "./Loader.module.css";
+import css from './Loader.module.css';
+import { CarIcon } from '../CarIcon/CarIcon';
 
-const Loader = () => {
+export const Loader = () => {
   return (
     <div className={css.loader_container}>
-      <img
-        src={carIcon}
-        alt="loader"
-        height={100}
-        width={100}
-        className={css.loader}
-      />
+      <CarIcon fill={'blue'} fillTire={'black'} stroke={'red'} />
     </div>
   );
 };
-
-export default Loader;
