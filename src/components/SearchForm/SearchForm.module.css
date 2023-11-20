@@ -88,9 +88,9 @@ input[name='mileageMax'] {
   border-bottom-left-radius: 0;
 }
 
-label[for='mileage-from'] {
+label[for='mileageMin'] {
   left: 24px;
 }
-label[for='mileage-to'] {
+label[for='mileageMax'] {
   left: 184px;
 }

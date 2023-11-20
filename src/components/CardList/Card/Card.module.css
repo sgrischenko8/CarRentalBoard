@@ -64,12 +64,3 @@
 .card_capitalize_text {
   text-transform: capitalize;
 }
-
-/* .card_tags_container span:not(:last-child)::after {
-  content: '';
-  box-sizing: border-box;
-  display: inline-flex;
-  height: 16px;
-  border: 1px solid #12141710;
-  margin: 0 6px;
-} */

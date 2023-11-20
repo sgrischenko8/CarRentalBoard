@@ -59,6 +59,7 @@ const Catalog = () => {
         {limit === 12 && (
           <button
             type="button"
+            title="Load more"
             onClick={() => {
               setCurrentPage(1);
               setLimit(undefined);

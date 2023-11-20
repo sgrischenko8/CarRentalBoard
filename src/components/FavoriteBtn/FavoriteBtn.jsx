@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from 'src/redux/favoritesSlice';
 import { selectFavorites } from 'src/redux/selectors';
 
-export const FavoriteBtn = ({ fill, id }) => {
+export const FavoriteBtn = ({ id }) => {
   const dispatch = useDispatch();
   const persistedFavorites = useSelector(selectFavorites);
   const favorites = persistedFavorites.favorites;

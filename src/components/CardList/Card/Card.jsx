@@ -10,6 +10,7 @@ import { capitalize } from 'src/utils/capitalize';
 export const Card = ({ car }) => {
   const {
     _id,
+    img,
     make,
     model,
     year,
@@ -27,8 +28,8 @@ export const Card = ({ car }) => {
 
   return (
     <article className={css.card_container}>
-      <FavoriteBtn fill={'transparent'} id={_id} />
-      <CarImage make={make} model={model} />
+      <FavoriteBtn id={_id} />
+      <CarImage make={make} model={model} img={img} />
       <div className={css.card_flex_container}>
         <h3>{capitalize(make)}</h3>&nbsp;
         <span className={css.card_color_text}>{model}</span>,&nbsp;

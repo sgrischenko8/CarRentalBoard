@@ -1,12 +1,10 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Loader } from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from 'src/redux/favoritesSlice';
-import { selectFavorites } from 'src/redux/selectors';
+import { selectFavorites, selectAllCars } from 'src/redux/selectors';
 import { fetchAllCars } from 'src/redux/operations';
-import { selectAllCars } from 'src/redux/selectors';
 
 export const Layout = () => {
   const dispatch = useDispatch();

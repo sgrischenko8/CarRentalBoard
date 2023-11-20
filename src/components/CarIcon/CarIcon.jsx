@@ -1,6 +1,4 @@
-// import css from './CarIcon.module.css';
-
-export const CarIcon = ({ fill, fillTire, stroke }) => {
+export const CarIcon = ({ fill, fillTire }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

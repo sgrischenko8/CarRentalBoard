@@ -17,6 +17,7 @@ export const SearchForm = ({ cars }) => {
   const [mileageFrom, setMileageFrom] = useState('');
   const [mileageTo, setMileageTo] = useState('');
 
+  // creating object in the form necessary for the work of the select.
   const getOptions = (array) =>
     array.map((item) => {
       return { value: capitalize(item), label: capitalize(item) };
@@ -63,6 +64,7 @@ export const SearchForm = ({ cars }) => {
     dispatch(setFilter(formData));
   };
 
+  // function for transforming usual input "4500" in format "4,500"
   const onChageHandler = (value, stateValue, setValue) => {
     if (value.includes('.')) {
       return;
@@ -136,14 +138,16 @@ export const SearchForm = ({ cars }) => {
         <div style={{ display: 'flex', position: 'relative' }}>
           <input
             name="mileageMin"
+            id="mileageMin"
             className={css.catalog_mileage_input}
             onChange={(e) =>
               onChageHandler(e.target.value, mileageFrom, setMileageFrom)
             }
             value={mileageFrom}
           />
-          <label htmlFor="mileage-from">From</label>
+          <label htmlFor="mileageMin">From</label>
           <input
+            id="mileageMax"
             name="mileageMax"
             width={160}
             onChange={(e) =>
@@ -151,7 +155,7 @@ export const SearchForm = ({ cars }) => {
             }
             value={mileageTo}
           />
-          <label htmlFor="mileage-to">To</label>
+          <label htmlFor="mileageMax">To</label>
         </div>
       </fieldset>
 

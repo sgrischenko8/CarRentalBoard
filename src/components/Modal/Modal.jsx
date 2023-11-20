@@ -3,7 +3,6 @@ import styled from '../Button/Button.module.css';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { CarImage } from '../CarImage/CarImage';
-import { Link } from 'react-router-dom';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -145,20 +144,6 @@ export const Modal = ({ onClose, car, capitalize }) => {
               ))}
             </ul>
           </div>
-          {/* <Link
-            to="tel:+380730000000"
-            title="Call +380730000000"
-            className={styled.btn_bgc}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '168px',
-              height: '44px',
-            }}
-          >
-            Rental car
-          </Link> */}
           <a
             className={styled.btn_bgc}
             style={{
