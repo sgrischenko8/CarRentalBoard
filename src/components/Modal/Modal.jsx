@@ -10,6 +10,7 @@ export const Modal = ({ onClose, car, capitalize }) => {
   const {
     make,
     model,
+    img,
     year,
     address,
     type,
@@ -89,7 +90,7 @@ export const Modal = ({ onClose, car, capitalize }) => {
         <button className={css.modal_close_btn} onClick={() => onClose()}>
           +
         </button>
-        <CarImage make={make} model={model} isInModal={true} />
+        <CarImage make={make} model={model} img={img} isInModal={true} />
         <div className={css.modal_flex_column_container}>
           <div>
             <div className={css.modal_flex_container}>
