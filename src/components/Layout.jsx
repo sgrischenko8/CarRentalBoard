@@ -46,7 +46,7 @@ export const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-      <footer>&copy;copyright</footer>
+      <footer>&copy; copyright</footer>
     </div>
   );
 };
