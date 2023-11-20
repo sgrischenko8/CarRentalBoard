@@ -27,8 +27,8 @@ const Catalog = () => {
   const [limit, setLimit] = useState(12);
 
   let allCars = [];
-  allCars = location.state.allCars ? location.state.allCars : cars;
-  if (location.state.allCars) {
+  allCars = location?.state?.allCars ? location.state.allCars : cars;
+  if (location?.state?.allCars) {
     pageCount = Math.ceil(allCars.length / 12);
   }
 
@@ -54,7 +54,9 @@ const Catalog = () => {
         <CardList cars={cars} />
         <PaginatedItems
           setCurrentPage={setCurrentPage}
-          pageCount={limit !== 12 ? 0 : location.state.allCars ? pageCount : 3}
+          pageCount={
+            limit !== 12 ? 0 : location?.state?.allCars ? pageCount : 3
+          }
         />
         {limit === 12 && (
           <button
