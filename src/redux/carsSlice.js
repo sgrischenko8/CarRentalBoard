@@ -32,17 +32,11 @@ const fetchAllCarsSlice = createSlice({
   name: 'allCars',
   initialState: {
     items: [],
-    isLoading: false,
-    error: null,
   },
   extraReducers: {
-    [fetchAllCars.pending]: handlePending,
     [fetchAllCars.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
       state.items = action.payload;
     },
-    [fetchAllCars.rejected]: handleRejected,
   },
 });
 

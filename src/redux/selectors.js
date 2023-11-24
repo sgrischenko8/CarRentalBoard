@@ -17,15 +17,15 @@ export const selectContactsToRender = createSelector(
     }
     let filteredByBrandCars = [...cars];
     if (filter.brand) {
-      filteredByBrandCars = cars.filter(
-        (car) => car.make.toLowerCase() === filter.brand.toLowerCase(),
+      filteredByBrandCars = cars.filter((car) =>
+        car.make.toLowerCase().includes(filter.brand.toLowerCase()),
       );
     }
 
     let filteredByPriceCars = [...filteredByBrandCars];
     if (filter.rentalPrice) {
       filteredByPriceCars = filteredByBrandCars.filter(
-        (car) => +car.rentalPrice.replace('$', '') < filter.rentalPrice,
+        (car) => +car.rentalPrice.replace('$', '') <= filter.rentalPrice,
       );
     }
 

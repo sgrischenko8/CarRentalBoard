@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from 'src/redux/favoritesSlice';
 import { selectFavorites, selectAllCars } from 'src/redux/selectors';
 import { fetchAllCars } from 'src/redux/operations';
+import { setFilter } from 'src/redux/filterSlice';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,11 @@ export const Layout = () => {
               <NavLink to="/">About</NavLink>
             </li>
             <li>
-              <NavLink to="/catalog" state={{ allCars }}>
+              <NavLink
+                to="/catalog"
+                state={{ allCars }}
+                onClick={() => dispatch(setFilter({}))}
+              >
                 Catalog
               </NavLink>
             </li>

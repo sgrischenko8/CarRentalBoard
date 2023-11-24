@@ -56,53 +56,36 @@ export const SearchForm = ({ cars }) => {
         .match(/\d+/)[0];
     }
     formData.brand = event.target.brand.value;
-    formData.mileageMin =
-      +event.target.mileageMin.value.replace(',', '.') * 1000;
-    formData.mileageMax =
-      +event.target.mileageMax.value.replace(',', '.') * 1000;
 
+    const mileageMin = +event.target.mileageMin.value.replaceAll(',', '');
+    const mileageMax = +event.target.mileageMax.value.replaceAll(',', '');
+
+    if (mileageMin <= mileageMax) {
+      formData.mileageMin = mileageMin;
+      formData.mileageMax = mileageMax;
+    }
     dispatch(setFilter(formData));
   };
 
   // function for transforming usual input "4500" in format "4,500"
-  const onChageHandler = (value, stateValue, setValue) => {
-    if (value.includes('.')) {
+  const onChageHandler = (value, setValue) => {
+    if (isNaN(value.replaceAll(',', ''))) {
+      const removerdLastSymbol = value.slice(0, -1);
+      setValue(removerdLastSymbol);
       return;
     }
-    if (!stateValue) {
-      if (isNaN(value)) {
-        return;
-      }
-    }
-    if (isNaN(value.replace(',', ''))) {
+    if (value.length > 10) {
       return;
     }
-
-    if (!stateValue || stateValue === '0') {
-      setValue((+value / 1000).toString().slice(0, 5).replace('.', ','));
-      return;
-    }
-
-    let modify = value.replace(',', '.');
-
-    let decrModify = '';
-    let incrModify = '';
-    if (stateValue.length > value.length) {
-      decrModify = (+modify / 10).toString().slice(0, 5).replace('.', ',');
-      if (decrModify.indexOf(',') === 1) {
-        decrModify = decrModify.slice(0, 5);
-      }
+    let number = 0;
+    if (value.includes(',')) {
+      let text = value.replaceAll(',', '');
+      number = +text;
     } else {
-      if (+modify > 9.9999) {
-        return;
-      }
-      incrModify = (+modify * 10).toString().slice(0, 5).replace('.', ',');
-      if (incrModify.indexOf(',') === 2) {
-        incrModify = incrModify + '0';
-      }
+      number = +value;
     }
-
-    setValue(stateValue.length > value.length ? decrModify : incrModify);
+    const res = number.toLocaleString('ja-JP');
+    setValue(res);
   };
 
   return (
@@ -140,9 +123,7 @@ export const SearchForm = ({ cars }) => {
             name="mileageMin"
             id="mileageMin"
             className={css.catalog_mileage_input}
-            onChange={(e) =>
-              onChageHandler(e.target.value, mileageFrom, setMileageFrom)
-            }
+            onChange={(e) => onChageHandler(e.target.value, setMileageFrom)}
             value={mileageFrom}
           />
           <label htmlFor="mileageMin">From</label>
@@ -150,9 +131,7 @@ export const SearchForm = ({ cars }) => {
             id="mileageMax"
             name="mileageMax"
             width={160}
-            onChange={(e) =>
-              onChageHandler(e.target.value, mileageTo, setMileageTo)
-            }
+            onChange={(e) => onChageHandler(e.target.value, setMileageTo)}
             value={mileageTo}
           />
           <label htmlFor="mileageMax">To</label>
