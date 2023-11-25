@@ -9,7 +9,7 @@ export const selectError = (state) => state.cars.error;
 
 export const selectFilter = (state) => state.filter;
 
-export const selectContactsToRender = createSelector(
+export const selectCarsToRender = createSelector(
   [selectCars, selectFilter],
   (cars, filter) => {
     if (Object.values(filter).every((el) => el === 0 || el === '')) {

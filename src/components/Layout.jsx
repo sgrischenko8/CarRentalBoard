@@ -22,7 +22,7 @@ export const Layout = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <header>
         <nav>
           <ul>
@@ -52,6 +52,6 @@ export const Layout = () => {
         </Suspense>
       </main>
       <footer>&copy; copyright</footer>
-    </div>
+    </>
   );
 };

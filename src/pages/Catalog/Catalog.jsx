@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
-  selectContactsToRender,
+  selectCarsToRender,
   selectLoading,
   selectError,
 } from 'src/redux/selectors';
@@ -19,7 +19,7 @@ const Catalog = () => {
   let location = useLocation();
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const cars = useSelector(selectContactsToRender);
+  const cars = useSelector(selectCarsToRender);
 
   let pageCount = 3;
 
