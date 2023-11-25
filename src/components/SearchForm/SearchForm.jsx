@@ -10,7 +10,7 @@ import { brands } from 'src/brands';
 import { reactSelectStyle } from './reactSelectStyle';
 import { capitalize } from 'src/utils/capitalize';
 
-export const SearchForm = ({ cars }) => {
+export const SearchForm = ({ price }) => {
   const dispatch = useDispatch();
 
   const [chosenRentalPrice, setChosenRentalPrice] = useState('');
@@ -22,30 +22,6 @@ export const SearchForm = ({ cars }) => {
     array.map((item) => {
       return { value: capitalize(item), label: capitalize(item) };
     });
-
-  // creating array with range of rental prices
-  const getRentalPriceRangeOptions = (array) => {
-    let rentalPriceArray = [];
-    array.map((el) =>
-      rentalPriceArray.push(
-        Number(el.rentalPrice.slice(1, el.rentalPrice.length)),
-      ),
-    );
-
-    let maxRange = Math.ceil(Math.max(...rentalPriceArray) / 10) * 10;
-    let minRange = Math.ceil(Math.min(...rentalPriceArray) / 10) * 10;
-
-    let rentalPriceRangeArray = [];
-
-    let acc = minRange;
-
-    while (acc <= maxRange) {
-      rentalPriceRangeArray.push(acc);
-      acc += 10;
-    }
-
-    return rentalPriceRangeArray;
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -109,7 +85,7 @@ export const SearchForm = ({ cars }) => {
             label: `To ${chosenRentalPrice}$`,
           }}
           placeholder={'To $'}
-          options={getOptions(getRentalPriceRangeOptions(cars))}
+          options={getOptions(price)}
           onChange={(e) => {
             setChosenRentalPrice(e.value);
           }}

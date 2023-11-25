@@ -1,44 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars, fetchAllCars } from './operations';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const handlePending = (state) => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-const fetchCarsSlice = createSlice({
-  name: 'cars',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
-  extraReducers: {
-    [fetchCars.pending]: handlePending,
-    [fetchCars.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
-    [fetchCars.rejected]: handleRejected,
-  },
+export const carsApi = createApi({
+  reducerPath: 'cars',
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'https://64cbebf72eafdcdc851979fe.mockapi.io',
+  }),
+  tagTypes: ['Car'],
+  endpoints: (builder) => ({
+    getCars: builder.query({
+      query: (args) => ({
+        url: '/adverts',
+        params: { ...args },
+      }),
+    }),
+    getAllCars: builder.query({
+      query: () => '/adverts',
+      providesTags: ['Car'],
+    }),
+  }),
 });
 
-const fetchAllCarsSlice = createSlice({
-  name: 'allCars',
-  initialState: {
-    items: [],
-  },
-  extraReducers: {
-    [fetchAllCars.fulfilled](state, action) {
-      state.items = action.payload;
-    },
-  },
-});
-
-export const fetchCarsReducer = fetchCarsSlice.reducer;
-export const fetchAllCarsReducer = fetchAllCarsSlice.reducer;
+export const { useGetCarsQuery, useGetAllCarsQuery } = carsApi;

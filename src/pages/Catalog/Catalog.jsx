@@ -1,46 +1,71 @@
-import { fetchCars } from 'src/redux/operations';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import {
-  selectCarsToRender,
-  selectLoading,
-  selectError,
-} from 'src/redux/selectors';
-
+import { useSelector } from 'react-redux';
+import { selectFilter } from 'src/redux/selectors';
 import { CardList } from 'src/components/CardList/CardList';
 import { SearchForm } from 'src/components/SearchForm/SearchForm';
 import { Loader } from 'src/components/Loader/Loader';
 import { PaginatedItems } from 'src/components/Paginator/Paginator';
 import { Message } from 'src/components/Message/Message';
+import { getCarsToRender } from 'src/utils/getCarsToRender';
+import { useGetCarsQuery } from 'src/redux/carsSlice';
 
 const Catalog = () => {
-  const dispatch = useDispatch();
   let location = useLocation();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-  const cars = useSelector(selectCarsToRender);
+  const filter = useSelector(selectFilter);
 
   let pageCount = 3;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(12);
 
-  let allCars = [];
-  allCars = location?.state?.allCars ? location.state.allCars : cars;
-  if (location?.state?.allCars) {
-    pageCount = Math.ceil(allCars.length / 12);
+  const {
+    data: cars,
+    isLoading,
+    error,
+  } = useGetCarsQuery({
+    page: currentPage,
+    limit,
+  });
+  console.log(cars, 'in catalog');
+
+  let carsQuantity = 0;
+  carsQuantity = location?.state?.carsQuantity
+    ? location.state.carsQuantity
+    : cars?.length;
+  if (location?.state?.carsQuantity) {
+    pageCount = Math.ceil(carsQuantity / 12);
   }
 
-  useEffect(() => {
-    dispatch(fetchCars({ page: currentPage, limit }));
-  }, [dispatch, currentPage, limit]);
+  // creating array with range of rental prices
+  const getRentalPriceRangeOptions = (array) => {
+    let rentalPriceArray = [];
+    array.map((el) =>
+      rentalPriceArray.push(
+        Number(el.rentalPrice.slice(1, el.rentalPrice.length)),
+      ),
+    );
+
+    let maxRange = Math.ceil(Math.max(...rentalPriceArray) / 10) * 10;
+    let minRange = Math.ceil(Math.min(...rentalPriceArray) / 10) * 10;
+
+    let rentalPriceRangeArray = [];
+
+    let acc = minRange;
+
+    while (acc <= maxRange) {
+      rentalPriceRangeArray.push(acc);
+      acc += 10;
+    }
+
+    return rentalPriceRangeArray;
+  };
 
   return (
     <>
       <section>
-        {loading && <Loader />}
-        <SearchForm cars={cars} />
+        {isLoading && <Loader />}
+        {cars && <SearchForm price={getRentalPriceRangeOptions(cars)} />}
         {error && (
           <Message
             string={
@@ -48,27 +73,31 @@ const Catalog = () => {
             }
           />
         )}
-        {!loading && cars.length === 0 && (
+        {!isLoading && cars.length === 0 && (
           <Message string={'No results for such request'} />
         )}
-        <CardList cars={cars} />
-        <PaginatedItems
-          setCurrentPage={setCurrentPage}
-          pageCount={
-            limit !== 12 ? 0 : location?.state?.allCars ? pageCount : 3
-          }
-        />
-        {limit === 12 && (
-          <button
-            type="button"
-            title="Load more"
-            onClick={() => {
-              setCurrentPage(1);
-              setLimit(undefined);
-            }}
-          >
-            Load more
-          </button>
+        {cars && (
+          <>
+            <CardList cars={getCarsToRender(cars, filter)} />
+            <PaginatedItems
+              setCurrentPage={setCurrentPage}
+              pageCount={
+                limit !== 12 ? 0 : location?.state?.carsQuantity ? pageCount : 3
+              }
+            />
+            {limit === 12 && (
+              <button
+                type="button"
+                title="Load more"
+                onClick={() => {
+                  setCurrentPage(1);
+                  setLimit(undefined);
+                }}
+              >
+                Load more
+              </button>
+            )}
+          </>
         )}
       </section>
     </>

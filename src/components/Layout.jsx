@@ -1,11 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { Loader } from './Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavorites } from 'src/redux/favoritesSlice';
-import { selectFavorites, selectAllCars } from 'src/redux/selectors';
-import { fetchAllCars } from 'src/redux/operations';
+import { selectFavorites } from 'src/redux/selectors';
 import { setFilter } from 'src/redux/filterSlice';
+import { useGetAllCarsQuery } from 'src/redux/carsSlice';
 
 export const Layout = () => {
   const dispatch = useDispatch();
@@ -15,14 +15,15 @@ export const Layout = () => {
     dispatch(setFavorites([]));
   }
 
-  const allCars = useSelector(selectAllCars);
+  let carsQuantity;
 
-  useEffect(() => {
-    dispatch(fetchAllCars());
-  }, []);
+  const { data: allCars } = useGetAllCarsQuery();
+  if (allCars) {
+    carsQuantity = allCars.length;
+  }
 
   return (
-    <>
+    <div>
       <header>
         <nav>
           <ul>
@@ -32,7 +33,7 @@ export const Layout = () => {
             <li>
               <NavLink
                 to="/catalog"
-                state={{ allCars }}
+                state={{ carsQuantity }}
                 onClick={() => dispatch(setFilter({}))}
               >
                 Catalog
@@ -52,6 +53,6 @@ export const Layout = () => {
         </Suspense>
       </main>
       <footer>&copy; copyright</footer>
-    </>
+    </div>
   );
 };

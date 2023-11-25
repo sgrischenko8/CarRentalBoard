@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { fetchCarsReducer, fetchAllCarsReducer } from './carsSlice';
+import { carsApi } from './carsSlice';
 import { filterReducer } from './filterSlice';
 import { persistedReducer } from './favoritesSlice';
 import {
@@ -14,8 +14,7 @@ import {
 
 export const store = configureStore({
   reducer: {
-    cars: fetchCarsReducer,
-    allCars: fetchAllCarsReducer,
+    [carsApi.reducerPath]: carsApi.reducer,
     filter: filterReducer,
     favorites: persistedReducer,
   },
@@ -25,7 +24,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(carsApi.middleware),
 });
 
 export const persistor = persistStore(store);
